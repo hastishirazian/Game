@@ -2,7 +2,7 @@
 In this repository, we are going to do some visual designs using the **arcade** library.
 
 ---
-**You can access the program by running the following command:**
+**You can benefit from the functions and classes of this library by using the following commit:**
 ```bash
 import arcade
 ```

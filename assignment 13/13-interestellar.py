@@ -2,9 +2,10 @@ import arcade
 import random
 
 class Game(arcade.Window):                                                      #arcade.Window is a class in arcade library
+    
     def __init__(self):
         super().__init__(width=950 , height=600 , title= "interestellar game 2024")
-        arcade.set_background_color(arcade.color.BLACK)
+        arcade.set_background_color(arcade.color.CATALINA_BLUE)
         self.background = arcade.load_texture(":resources:images/backgrounds/stars.png")
         self.me = spaceship(self)                   # object of spaceship
         self.enemy = enemy(self.width, self.height)

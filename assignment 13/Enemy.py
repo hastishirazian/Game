@@ -1,3 +1,5 @@
+import random
+
 class enemy(arcade.Sprite):
     def __init__(self , w , h):
         super().__init__(":resources:images/space_shooter/playerShip1_blue.png")

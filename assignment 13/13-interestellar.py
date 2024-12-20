@@ -10,7 +10,7 @@ class Game(arcade.Window):                                                      
         arcade.set_background_color(arcade.color.CATALINA_BLUE)
         self.background = arcade.load_texture(":resources:images/backgrounds/stars.png")
         self.me = spaceship(self)                   # object of spaceship
-        self.enemy = enemy(self.width, self.height)
+        self.enemy = enemy(self.width, self.height) # object of enemy's spaceship
 
     def on_draw(self):                                                          #This meyhod i for showing something
         arcade.start_render()

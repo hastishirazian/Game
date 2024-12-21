@@ -1,3 +1,4 @@
+import arcade
 import random
 
 class enemy(arcade.Sprite):

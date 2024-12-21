@@ -1,7 +1,7 @@
 import arcade
 import random
 from Spaceship import spaceship
-from Enemy import enemy
+from Enemy import enemy 
 
 class Game(arcade.Window):                                                      #arcade.Window is a class in arcade library
     
@@ -11,12 +11,14 @@ class Game(arcade.Window):                                                      
         self.background = arcade.load_texture(":resources:images/backgrounds/stars.png")
         self.me = spaceship(self)                   # object of spaceship
         self.enemy = enemy(self.width, self.height) # object of enemy's spaceship
+        self.enemys = []
 
     def on_draw(self):                                                          #This meyhod i for showing something
         arcade.start_render()
         arcade.draw_lrwh_rectangle_textured(0, 0, self.width, self.height, self.background)
         self.me.draw()
-        self.enemy.draw()
+        for enemy in self.enemys:
+            enemy.draw()
         arcade.finish_render()
 
     def on_key_press(self , symbol: int ,modifiers: int):
@@ -29,8 +31,10 @@ class Game(arcade.Window):                                                      
             ...
 
     def on_update(self , delta_time: float):
-        self.enemy.move()
-
+        for enemy in self.enemys:
+            self.enemy.move()
+        self.new_enemy = enemy(self.width, self.height)
+        self.enemys.append(self.new_enemy)
 
 
 

@@ -10,7 +10,7 @@ class Game(arcade.Window):                                       #arcade.Window 
         super().__init__(width=950 , height=600 , title= "interestellar game 2024")
         arcade.set_background_color(arcade.color.CATALINA_BLUE)
         self.background = arcade.load_texture(":resources:images/backgrounds/stars.png")
-        self.me = spaceship(self.width, self)                   # object of spaceship
+        self.me = spaceship(self.width, self)                    # object of spaceship
         self.enemys = []
 
 
@@ -72,4 +72,4 @@ class Game(arcade.Window):                                       #arcade.Window 
 
         
 window = Game()
-arcade.run()
+arcade.run()  

@@ -12,7 +12,16 @@ class Game(arcade.Window):                                       #arcade.Window 
         self.background = arcade.load_texture(":resources:images/backgrounds/stars.png")
         self.me = spaceship(self.width, self)                    # object of spaceship
         self.enemys = []
+        self.enemy_speed = 3 
+        arcade.schedule(self.add_enemy, 3)
 
+    def add_enemy(self, delta_time):
+
+        new_enemy = enemy(self.width, self.height)
+        self.enemys.append(new_enemy)
+        self.enemy_speed += 0.2
+
+        print(f"{self.enemy_speed}")  
 
     def on_draw(self):                                           #This meyhod i for showing something
         arcade.start_render()
@@ -22,7 +31,7 @@ class Game(arcade.Window):                                       #arcade.Window 
         for i in self.enemys:
             i.draw()
 
-        for i in bullet_list:
+        for i in self.me.bullet_list:
             i.draw()
 
         arcade.finish_render()
@@ -44,24 +53,26 @@ class Game(arcade.Window):                                       #arcade.Window 
 
 
     def on_update(self , delta_time: float):
+
         self.me.move()
 
         for i in self.enemys:
             i.move()
+
         if random.randint(1 , 100) == 5:
             self.new_enemy = enemy(self.width, self.height)
             self.enemys.append(self.new_enemy)
 
-        for i in bullet_list:
+        for i in self.me.bullet_list:
             i.move()
 
         for i in self.enemys:
             if arcade.check_for_collision(self.me , i):
-                print("Game over💀")
+                print("^^^^^^^^^^^^^^^^^^^^^^Game over💀^^^^^^^^^^^^^^^^^^^^^^")
                 exit(0)
 
         for i in self.enemys:
-            for j in bullet_list:
+            for j in self.me.bullet_list:
                 if arcade.check_for_collision(i, j):
                     self.enemys.remove(i)
                     self.me.bullet_list.remove(j)
@@ -70,6 +81,7 @@ class Game(arcade.Window):                                       #arcade.Window 
             if i.center_y < 0 :
                 self.enemys.remove(i)
 
-        
+
+
 window = Game()
 arcade.run()  
